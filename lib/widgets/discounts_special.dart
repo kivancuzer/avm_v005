@@ -1,5 +1,3 @@
-import 'package:avmv005/Pages/home_page_deneme.dart';
-import 'package:avmv005/Pages/search.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -10,7 +8,7 @@ class DiscountPageSpecials extends StatelessWidget{
     var firestore = Firestore.instance;
 
     QuerySnapshot qs =
-        await firestore.collection("Anasayfa_Avmler").getDocuments();
+        await firestore.collection("Avm+_Special_Discounts").getDocuments();
 
     return qs.documents;
   }

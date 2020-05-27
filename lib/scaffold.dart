@@ -1,10 +1,8 @@
-import 'package:avmv005/Pages/bilboard_page.dart';
-import 'package:avmv005/Pages/home_page.dart';
-import 'package:avmv005/Pages/discounts_page.dart';
-import 'package:avmv005/Pages/home_page_deneme.dart';
+import 'package:avmv005/Pages/NavigationBar/new_home_page.dart';
 import 'package:avmv005/Pages/search.dart';
 import 'package:avmv005/main.dart';
 import 'package:flutter/material.dart';
+
 
 class ScaffoldOgesi extends StatefulWidget {
   @override
@@ -17,7 +15,7 @@ class ScaffoldState extends State<ScaffoldOgesi> {
   gecerliSayfa(int aktif) {
     switch (aktif) {
       case 0:
-        return HomeScreen();
+        return HomeScreenNew();
         break;
 
       case 1:
@@ -25,22 +23,21 @@ class ScaffoldState extends State<ScaffoldOgesi> {
         break;
 
       case 2:
-        return FirestoreSlideshow();
+        return HomeScreenNew();
         break;
 
       case 3:
-        return HomeScreen();
+        return HomeScreenNew();
         break;
 
       case 4:
-        return HomeScreen();
+        return HomeScreenNew();
         break;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return new Scaffold(
       appBar: new AppBar(
         backgroundColor: Color.fromRGBO(80, 77, 229, 100),

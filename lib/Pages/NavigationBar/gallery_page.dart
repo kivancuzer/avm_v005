@@ -1,28 +1,28 @@
 import 'package:avmv005/main.dart';
-import 'package:avmv005/widgets/bilboard_widget.dart';
+import 'package:avmv005/widgets/gallery.dart';
 import 'package:flutter/material.dart';
 
-class BilboardScreen extends StatefulWidget {
+
+class GalleryScreen extends StatefulWidget {
   @override
-  _BilboardScreenState createState() => _BilboardScreenState();
+  _GalleryScreenState createState() => _GalleryScreenState();
 }
 
-class _BilboardScreenState extends State<BilboardScreen> {
+class _GalleryScreenState extends State<GalleryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: new AppBar(
-          title: new Text("Bilboard Page"),
+          title: new Text("Gallery Page"),
         ),
         drawer: DrawerCodeOnly(),
         body: SafeArea(
           child: ListView(
             children: <Widget>[
-              Bilboards(),
+              Gallery(),
             ],
           ),
-        ));
+        )
+        );
   }
 }
-
-

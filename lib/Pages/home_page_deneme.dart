@@ -1,9 +1,6 @@
 import 'dart:async';
-
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 //Slide Show  FirestoreSlideshow(),
@@ -73,7 +70,6 @@ class FirestoreSlideshowState extends State<FirestoreSlideshow> {
 
 _buildStoryPage(Map data, bool active) {
   final double blur = active ? 30 : 0;
-  final double offset = active ? 20 : 0;
   final double a = active ? 10 : 50;
 
   return AnimatedContainer(

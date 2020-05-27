@@ -1,22 +1,19 @@
-import 'package:avmv005/Pages/home_page_deneme.dart';
-import 'package:avmv005/Pages/search.dart';
+import 'package:avmv005/Pages/NavigationBar/MovieScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:avmv005/Pages/home_page.dart';
 
 class Bilboards extends StatelessWidget {
   Future getPosts() async {
     var firestore = Firestore.instance;
 
-    QuerySnapshot qs =
-        await firestore.collection("Anasayfa_Avmler").getDocuments();
+    QuerySnapshot qs = await firestore.collection("Bilboards").getDocuments();
 
     return qs.documents;
   }
 
- @override
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
@@ -24,28 +21,13 @@ class Bilboards extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Text(
-                "Bilboards",
-                style: TextStyle(
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: 1.5),
-              ),
-              Text("See All",
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 1.0,
-                  ))
-            ],
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[],
           ),
         ),
         Container(
-            height: 550.0,
-            width: 350.0,
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
             color: Colors.white,
             child: FutureBuilder(
                 future: getPosts(),
@@ -61,14 +43,28 @@ class Bilboards extends StatelessWidget {
                         itemBuilder: (_, index) {
                           //snapshot.data[index].data["name"]),
                           return GestureDetector(
-                            onTap: (){
-                              Navigator.push(context,
-                               MaterialPageRoute(
-                                 builder: (context) => HomeScreen()));
-                            },
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (_) => MovieScreen(
+                                  imageUrl: snapshot.data[index].data["image"]
+                                      .toString(),
+                                  avmName: snapshot.data[index].data["avm_name"]
+                                      .toString(),
+                                  brandName: snapshot
+                                      .data[index].data["brand_name"]
+                                      .toString(),
+                                  info: snapshot.data[index].data["info"]
+                                      .toString(),
+                                  stars: snapshot.data[index].data["stars"],
+                                  title: snapshot.data[index].data["title"]
+                                      .toString(),
+                                ),
+                              ),
+                            ),
                             child: Container(
                               margin: EdgeInsets.all(10.0),
-                              width: 220,
+                              width: 150,
                               child: Stack(
                                 children: <Widget>[
                                   AnimatedContainer(
@@ -87,8 +83,8 @@ class Bilboards extends StatelessWidget {
                                         )
                                       ],
                                     ),
-                                    height: 400,
-                                    width: 300,
+                                    height: 200,
+                                    width: MediaQuery.of(context).size.width,
                                   )
                                 ],
                               ),
@@ -99,6 +95,8 @@ class Bilboards extends StatelessWidget {
                 })),
         SizedBox(height: 30.0),
       ],
+      
     );
+    
   }
 }

@@ -1,28 +1,27 @@
 import 'package:avmv005/main.dart';
-import 'package:avmv005/widgets/bilboard_widget.dart';
+import 'package:avmv005/widgets/trends_widget.dart';
 import 'package:flutter/material.dart';
 
-class BilboardScreen extends StatefulWidget {
+class TrendsScreen extends StatefulWidget {
   @override
-  _BilboardScreenState createState() => _BilboardScreenState();
+  _TrendsScreenState createState() => _TrendsScreenState();
 }
 
-class _BilboardScreenState extends State<BilboardScreen> {
+class _TrendsScreenState extends State<TrendsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: new AppBar(
-          title: new Text("Bilboard Page"),
+          title: new Text("Trends Page"),
         ),
         drawer: DrawerCodeOnly(),
         body: SafeArea(
           child: ListView(
             children: <Widget>[
-              Bilboards(),
+              Trends(),
             ],
           ),
-        ));
+        )
+        );
   }
 }
-
-

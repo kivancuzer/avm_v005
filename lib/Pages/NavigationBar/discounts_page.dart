@@ -12,9 +12,7 @@ class _DiscountsScreen extends State<DiscountsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: new Text("Discounts Page"),
-      ),
+      appBar: buildAppBar(),
       drawer: DrawerCodeOnly(),
       body: SafeArea(
         child: ListView(

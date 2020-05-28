@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-
-import '../CircularClipper.dart';
+import 'CircularClipper.dart';
 
 class FullScreen extends StatefulWidget {
   //Full Screende hangi parametreleri göstermek istiyoruz

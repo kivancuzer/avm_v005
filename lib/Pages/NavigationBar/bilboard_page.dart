@@ -11,9 +11,7 @@ class _BilboardScreenState extends State<BilboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: new Text("Bilboard Page"),
-      ),
+      appBar: buildAppBar(),
       drawer: DrawerCodeOnly(),
       body: SafeArea(
         child: ListView(

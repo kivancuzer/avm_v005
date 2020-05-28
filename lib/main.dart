@@ -119,3 +119,19 @@ class DrawerCodeOnly extends StatelessWidget {
     ));
   }
 }
+Widget buildAppBar() {
+    return new AppBar(
+      backgroundColor: Color.fromRGBO(80, 77, 229, 100),
+            shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+          bottom: Radius.circular(30),
+        )),
+        title: Container(
+          decoration: BoxDecoration(
+            color: Color.fromRGBO(73, 70, 218, 100),
+            borderRadius: BorderRadius.circular(5),
+          ),
+          
+   ),
+    );
+  }

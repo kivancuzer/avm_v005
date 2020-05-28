@@ -3,7 +3,8 @@ import 'package:avmv005/widgets/content_scroll.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:avmv005/Pages/NavigationBar/FullScreen.dart';
+import 'package:avmv005/Pages/FullScreen.dart';
+import '../../main.dart';
 
 class HomeScreenNew extends StatefulWidget {
   @override
@@ -123,6 +124,8 @@ class _HomeScreenNewState extends State<HomeScreenNew> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: buildAppBar(),
+      drawer: DrawerCodeOnly(),
       // Alternatif Bir Menu ve Search Buttonu Tasarımı
 
       /*backgroundColor: Colors.white,

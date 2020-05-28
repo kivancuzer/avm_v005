@@ -1,4 +1,4 @@
-import 'package:avmv005/Pages/NavigationBar/FullScreen.dart';
+import 'package:avmv005/Pages/FullScreen.dart';
 import 'package:avmv005/Pages/See_All/discount_slides_see_all.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

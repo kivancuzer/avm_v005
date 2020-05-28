@@ -1,4 +1,4 @@
-import 'package:avmv005/Pages/NavigationBar/FullScreen.dart';
+import 'package:avmv005/Pages/FullScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -32,16 +32,16 @@ class DiscountsSlidesSeelAllWidget extends StatelessWidget {
                 return GridView.builder(
                   primary: false,
                   itemCount: snapshot.data.length,
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.only(top:15.0,left:5.0),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    crossAxisSpacing: 5.0,
-                    mainAxisSpacing: 5.0,
+                    crossAxisSpacing: 10.0,
+                    mainAxisSpacing: 10.0,
                   ),
                   itemBuilder: (_, index) {
                     return Container(
                       width: 200,
-                      height: 150,
+                      height: 200,
                       child: Stack(
                         children: <Widget>[
                           Material(

@@ -11,9 +11,7 @@ class _GalleryScreenState extends State<GalleryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: new Text("Gallery Page"),
-      ),
+      appBar: buildAppBar(),
       drawer: DrawerCodeOnly(),
       body: SafeArea(
         child: ListView(

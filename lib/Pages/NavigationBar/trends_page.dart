@@ -11,9 +11,7 @@ class _TrendsScreenState extends State<TrendsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: new AppBar(
-        title: new Text("Trends Page"),
-      ),
+      appBar: buildAppBar(),
       drawer: DrawerCodeOnly(),
       body: SafeArea(
         child: ListView(

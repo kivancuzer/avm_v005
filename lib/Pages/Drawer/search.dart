@@ -9,7 +9,7 @@ class SearchListExample extends StatefulWidget {
 
 class _SearchListExampleState extends State<SearchListExample> {
   Widget appBarTitle = new Text(
-    "",//Search Sample
+    "", //Search Sample
     style: new TextStyle(color: Colors.white),
   );
   Icon icon = new Icon(
@@ -46,16 +46,18 @@ class _SearchListExampleState extends State<SearchListExample> {
     values();
   }
 
-  void values() {
+  void values()  {
     _list = List();
-    _list.add("Indian rupee");
-    _list.add("United States dollar");
-    _list.add("Australian dollar");
-    _list.add("Euro");
-    _list.add("British pound");
-    _list.add("Yemeni rial");
-    _list.add("Japanese yen");
-    _list.add("Hong Kong dollar");
+    var firestore = Firestore.instance;
+    //Anasayfa_Avmler Koleksiyonunu çek
+    firestore
+        .collection("Anasayfa_Avmler")
+        .getDocuments()
+        .then((querySnapshot) {
+      querySnapshot.documents.forEach((result) {
+        _list.add(result.data["avm_name"]);
+      });
+    });
   }
 
   @override
@@ -90,7 +92,7 @@ class _SearchListExampleState extends State<SearchListExample> {
                               title: new Text(listData.toString()),
                             );
                           },
-                        ))
+                        ),)
             ],
           ),
         ));
@@ -98,40 +100,42 @@ class _SearchListExampleState extends State<SearchListExample> {
 
   Widget buildAppBarSearch(BuildContext context) {
     return new AppBar(
-      backgroundColor: Color.fromRGBO(80, 77, 229, 100),
-            shape: RoundedRectangleBorder(
+        backgroundColor: Color.fromRGBO(80, 77, 229, 100),
+        shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
           bottom: Radius.circular(30),
         )),
-    centerTitle: true, title: appBarTitle, actions: <Widget>[
-      new IconButton(
-        icon: icon,
-        onPressed: () {
-          setState(() {
-            if (this.icon.icon == Icons.search) {
-              this.icon = new Icon(
-                Icons.close,
-                color: Colors.white,
-              );
-              this.appBarTitle = new TextField(
-                controller: _controller,
-                style: new TextStyle(
-                  color: Colors.white,
-                ),
-                decoration: new InputDecoration(
-                    prefixIcon: new Icon(Icons.search, color: Colors.white),
-                    hintText: "Search...",
-                    hintStyle: new TextStyle(color: Colors.white)),
-                onChanged: searchOperation,
-              );
-              _handleSearchStart();
-            } else {
-              _handleSearchEnd();
-            }
-          });
-        },
-      ),
-    ]);
+        centerTitle: true,
+        title: appBarTitle,
+        actions: <Widget>[
+          new IconButton(
+            icon: icon,
+            onPressed: () {
+              setState(() {
+                if (this.icon.icon == Icons.search) {
+                  this.icon = new Icon(
+                    Icons.close,
+                    color: Colors.white,
+                  );
+                  this.appBarTitle = new TextField(
+                    controller: _controller,
+                    style: new TextStyle(
+                      color: Colors.white,
+                    ),
+                    decoration: new InputDecoration(
+                        prefixIcon: new Icon(Icons.search, color: Colors.white),
+                        hintText: "Search...",
+                        hintStyle: new TextStyle(color: Colors.white)),
+                    onChanged: searchOperation,
+                  );
+                  _handleSearchStart();
+                } else {
+                  _handleSearchEnd();
+                }
+              });
+            },
+          ),
+        ]);
   }
 
   void _handleSearchStart() {

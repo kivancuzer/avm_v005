@@ -1,4 +1,4 @@
-import 'package:avmv005/Pages/NavigationBar/MovieScreen.dart';
+import 'package:avmv005/Pages/NavigationBar/FullScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -7,7 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Events extends StatelessWidget {
   Future getPosts() async {
     var firestore = Firestore.instance;
-
+    //Firebasede Events Koleksiyonun altındaki tüm veriyi çek.
     QuerySnapshot qs = await firestore.collection("Events").getDocuments();
 
     return qs.documents;
@@ -23,11 +23,13 @@ class Events extends StatelessWidget {
           child: FutureBuilder(
             future: getPosts(),
             builder: (_, AsyncSnapshot snapshot) {
+              //Veriler Yüklenirken Ekranda Gösterilir
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(
                   child: Text("Loading..."),
                 );
               } else {
+                //Veriler Yüklendikten Sonra Bu Kod Çalışır
                 return GridView.builder(
                     primary: false,
                     itemCount: snapshot.data.length,
@@ -44,11 +46,12 @@ class Events extends StatelessWidget {
                         child: Stack(
                           children: <Widget>[
                             Material(
+                              //Container Tıklandığında Ne Olacağı
                               child: GestureDetector(
                                 onTap: () => Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (_) => MovieScreen(
+                                    builder: (_) => FullScreen(
                                       imageUrl: snapshot
                                           .data[index].data["image"]
                                           .toString(),
@@ -72,6 +75,7 @@ class Events extends StatelessWidget {
                                     image: DecorationImage(
                                         fit: BoxFit.fill,
                                         image: NetworkImage(
+                                          //Koleksiyonun Altından Belirlenen Veriyi Çeker
                                           snapshot.data[index].data['image'],
                                         )),
                                     boxShadow: [
@@ -82,7 +86,7 @@ class Events extends StatelessWidget {
                                   ),
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       );
@@ -90,7 +94,7 @@ class Events extends StatelessWidget {
               }
             },
           ),
-        )
+        ),
       ],
     );
   }

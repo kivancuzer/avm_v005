@@ -11,18 +11,18 @@ class _BilboardScreenState extends State<BilboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: new AppBar(
-          title: new Text("Bilboard Page"),
+      appBar: new AppBar(
+        title: new Text("Bilboard Page"),
+      ),
+      drawer: DrawerCodeOnly(),
+      body: SafeArea(
+        child: ListView(
+          children: <Widget>[
+            //Bilboards Widget
+            Bilboards(),
+          ],
         ),
-        drawer: DrawerCodeOnly(),
-        body: SafeArea(
-          child: ListView(
-            children: <Widget>[
-              Bilboards(),
-            ],
-          ),
-        ));
+      ),
+    );
   }
 }
-
-

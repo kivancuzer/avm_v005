@@ -1,9 +1,9 @@
 import 'package:avmv005/Pages/NavigationBar/events_page.dart';
 import 'package:avmv005/Pages/NavigationBar/trends_page.dart';
-import 'package:avmv005/Pages/bilboard_page.dart';
-import 'package:avmv005/Pages/discounts_page.dart';
 import 'package:avmv005/scaffold.dart';
 import 'package:flutter/material.dart';
+import 'Pages/NavigationBar/bilboard_page.dart';
+import 'Pages/NavigationBar/discounts_page.dart';
 import 'Pages/NavigationBar/gallery_page.dart';
 
 void main() {
@@ -84,9 +84,10 @@ class DrawerCodeOnly extends StatelessWidget {
                     trailing: Icon(Icons.arrow_right),
                     onTap: () {
                       Navigator.push(
-                          context,
-                          new MaterialPageRoute(
-                              builder: (context) => new EventsScreen()));
+                        context,
+                        new MaterialPageRoute(
+                            builder: (context) => new EventsScreen()),
+                      );
                     }),
                 ListTile(
                     title: Text("Gallery"),

@@ -1,7 +1,7 @@
 import 'package:avmv005/Pages/NavigationBar/new_home_page.dart';
-import 'package:avmv005/Pages/search.dart';
 import 'package:avmv005/main.dart';
 import 'package:flutter/material.dart';
+import 'Pages/Drawer/search.dart';
 
 
 class ScaffoldOgesi extends StatefulWidget {

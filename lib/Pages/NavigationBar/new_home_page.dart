@@ -3,8 +3,7 @@ import 'package:avmv005/widgets/content_scroll.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
-import 'MovieScreen.dart';
+import 'package:avmv005/Pages/NavigationBar/FullScreen.dart';
 
 class HomeScreenNew extends StatefulWidget {
   @override
@@ -16,7 +15,7 @@ class _HomeScreenNewState extends State<HomeScreenNew> {
 
   Future getPosts() async {
     var firestore = Firestore.instance;
-
+    //"Anasayfa_Ust" Koleksiyonundaki bütün veriyi çeker.
     QuerySnapshot qs =
         await firestore.collection("Anasayfa_Ust").getDocuments();
 
@@ -49,13 +48,13 @@ class _HomeScreenNewState extends State<HomeScreenNew> {
         child: FutureBuilder(
             future: getPosts(),
             builder: (_, AsyncSnapshot snapshot) {
+              //Veriler Yüklenene Kadar Ne Olacağı
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(
                   child: Text("Loading..."),
                 );
               } else {
-                bool active = index == snapshot.data[index];
-                final double a = active ? 30 : 10;
+                //Verileri Göster
                 return Stack(
                   children: <Widget>[
                     Container(
@@ -72,11 +71,12 @@ class _HomeScreenNewState extends State<HomeScreenNew> {
                         ],
                       ),
                       child: Center(
+                        //Animated Containera Tıklayınca Full Screende Aç
                         child: GestureDetector(
                           onTap: () => Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => MovieScreen(
+                              builder: (_) => FullScreen(
                                 imageUrl: snapshot.data[index].data["image"]
                                     .toString(),
                                 avmName: snapshot.data[index].data["avm_name"]
@@ -114,14 +114,6 @@ class _HomeScreenNewState extends State<HomeScreenNew> {
                         ),
                       ),
                     ),
-                    /*Text(
-                        snapshot.data[index].data['avm_name']
-                            .toString()
-                            .toUpperCase(),
-                        style: TextStyle(
-                            color: Colors.blue,
-                            fontSize: 20.0,
-                            fontWeight: FontWeight.bold)),*/
                   ],
                 );
               }
@@ -131,6 +123,8 @@ class _HomeScreenNewState extends State<HomeScreenNew> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // Alternatif Bir Menu ve Search Buttonu Tasarımı
+
       /*backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -167,6 +161,8 @@ class _HomeScreenNewState extends State<HomeScreenNew> {
             ),
           ),
           SizedBox(height: 20.0),
+          //Content Scroll Widgetı
+          //Anasayfanın altındaki horizontal yapı
           ContentScroll(),
         ],
       ),

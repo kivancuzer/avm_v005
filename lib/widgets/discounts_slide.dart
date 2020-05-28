@@ -1,5 +1,5 @@
-
-import 'package:avmv005/Pages/NavigationBar/new_home_page.dart';
+import 'package:avmv005/Pages/NavigationBar/FullScreen.dart';
+import 'package:avmv005/Pages/See_All/discount_slides_see_all.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -32,13 +32,23 @@ class DiscountPageSlide extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1.5),
               ),
-              Text("See All",
-                  style: TextStyle(
-                    color: Theme.of(context).primaryColor,
-                    fontSize: 16.0,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 1.0,
-                  ))
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DiscountsSlidesSeeAll(),
+                    ),
+                  );
+                },
+                child: Text("See All",
+                    style: TextStyle(
+                      color: Theme.of(context).primaryColor,
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 1.0,
+                    )),
+              ),
             ],
           ),
         ),
@@ -60,10 +70,27 @@ class DiscountPageSlide extends StatelessWidget {
                         itemBuilder: (_, index) {
                           //snapshot.data[index].data["name"]),
                           return GestureDetector(
-                            onTap: (){
-                              Navigator.push(context,
-                               MaterialPageRoute(
-                                 builder: (context) => HomeScreenNew()));
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => FullScreen(
+                                      imageUrl: snapshot
+                                          .data[index].data["image"]
+                                          .toString(),
+                                      avmName: snapshot
+                                          .data[index].data["avm_name"]
+                                          .toString(),
+                                      brandName: snapshot
+                                          .data[index].data["brand_name"]
+                                          .toString(),
+                                      info: snapshot.data[index].data["info"]
+                                          .toString(),
+                                      stars: snapshot.data[index].data["stars"],
+                                      title: snapshot.data[index].data["title"]
+                                          .toString(),
+                                    ),
+                                  ));
                             },
                             child: Container(
                               margin: EdgeInsets.all(10.0),

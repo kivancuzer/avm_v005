@@ -4,7 +4,8 @@ import 'package:flutter/widgets.dart';
 
 import '../CircularClipper.dart';
 
-class MovieScreen extends StatefulWidget {
+class FullScreen extends StatefulWidget {
+  //Full Screende hangi parametreleri göstermek istiyoruz
   final String imageUrl;
   final String avmName;
   final String brandName;
@@ -12,7 +13,7 @@ class MovieScreen extends StatefulWidget {
   final String stars;
   final String title;
 
-  MovieScreen(
+  FullScreen(
       {this.imageUrl,
       this.avmName,
       this.brandName,
@@ -20,10 +21,10 @@ class MovieScreen extends StatefulWidget {
       this.stars,
       this.title});
   @override
-  _MovieScreenState createState() => _MovieScreenState();
+  _FullScreenState createState() => _FullScreenState();
 }
 
-class _MovieScreenState extends State<MovieScreen> {
+class _FullScreenState extends State<FullScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,11 +34,14 @@ class _MovieScreenState extends State<MovieScreen> {
           Stack(
             children: <Widget>[
               Container(
+                //X Y Z Eksenine Göre Konum Belirleme
                 transform: Matrix4.translationValues(0.0, -30.0, 0.0),
                 child: Hero(
                   tag: widget.imageUrl,
                   child: ClipShadowPath(
                     shadow: Shadow(blurRadius: 20.0),
+                    //Githubdan Çektiğimiz Bir Tasarım
+                    //Resmin Altının Oval Olmasını Sağlıyor
                     clipper: CircularClipper(),
                     child: Image(
                         height: 350.0,
@@ -54,6 +58,7 @@ class _MovieScreenState extends State<MovieScreen> {
                 children: <Widget>[
                   IconButton(
                     padding: EdgeInsets.only(left: 30.0),
+                    //Geri Dön
                     onPressed: () => Navigator.pop(context),
                     icon: Icon(Icons.arrow_back),
                     iconSize: 30.0,
@@ -165,6 +170,7 @@ class _MovieScreenState extends State<MovieScreen> {
                 SizedBox(height: 25.0),
                 Container(
                   height: 200.0,
+                  //SingleChildScrollView Texte Kendi İçinde de Kaydırma Özelliği Verir.
                   child: SingleChildScrollView(
                     child: Text(
                       widget.info,

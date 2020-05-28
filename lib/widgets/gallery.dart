@@ -1,4 +1,4 @@
-import 'package:avmv005/Pages/NavigationBar/MovieScreen.dart';
+import 'package:avmv005/Pages/NavigationBar/FullScreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -7,7 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Gallery extends StatelessWidget {
   Future getPosts() async {
     var firestore = Firestore.instance;
-
+    //Firebaseden Koleksiyonu çek
     QuerySnapshot qs = await firestore.collection("Gallery").getDocuments();
 
     return qs.documents;
@@ -23,11 +23,13 @@ class Gallery extends StatelessWidget {
           child: FutureBuilder(
             future: getPosts(),
             builder: (_, AsyncSnapshot snapshot) {
+              //Veriler yüklenirken
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(
                   child: Text("Loading..."),
                 );
-              } else {
+              } //Veriler yüklendikten sonra
+              else {
                 return GridView.builder(
                     primary: false,
                     itemCount: snapshot.data.length,
@@ -38,11 +40,12 @@ class Gallery extends StatelessWidget {
                       mainAxisSpacing: 5.0,
                     ),
                     itemBuilder: (_, index) {
+                      //Seçilen Containerı FullScreende göster
                       return GestureDetector(
                         onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => MovieScreen(
+                            builder: (_) => FullScreen(
                               imageUrl:
                                   snapshot.data[index].data["image"].toString(),
                               avmName: snapshot.data[index].data["avm_name"]

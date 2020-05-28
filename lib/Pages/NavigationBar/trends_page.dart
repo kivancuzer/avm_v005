@@ -11,17 +11,23 @@ class _TrendsScreenState extends State<TrendsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: new AppBar(
-          title: new Text("Trends Page"),
+      appBar: new AppBar(
+        title: new Text("Trends Page"),
+      ),
+      drawer: DrawerCodeOnly(),
+      body: SafeArea(
+        child: ListView(
+          children: <Widget>[
+            // Trends Widgetını getir
+            /*Birçok sayfada benzer işler yapan GridView yapısı için 
+              farklı widgetlar kullanıyoruz. Daha efektif bir yapı için 
+              tek bir widgetın farklı sayfalardan farklı Firebase Koleksiyonları
+              için çağırılması daha sağlıklı olacaktır.
+              */
+            Trends(),
+          ],
         ),
-        drawer: DrawerCodeOnly(),
-        body: SafeArea(
-          child: ListView(
-            children: <Widget>[
-              Trends(),
-            ],
-          ),
-        )
-        );
+      ),
+    );
   }
 }

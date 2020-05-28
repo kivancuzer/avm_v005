@@ -11,16 +11,18 @@ class _EventsScreenState extends State<EventsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: new AppBar(
-          title: new Text("Events Page"),
+      appBar: new AppBar(
+        title: new Text("Events Page"),
+      ),
+      drawer: DrawerCodeOnly(),
+      body: SafeArea(
+        child: ListView(
+          children: <Widget>[
+            //Events Widgetını göster.
+            Events(),
+          ],
         ),
-        drawer: DrawerCodeOnly(),
-        body: SafeArea(
-          child: ListView(
-            children: <Widget>[
-              Events(),
-            ],
-          ),
-        ));
+      ),
+    );
   }
 }

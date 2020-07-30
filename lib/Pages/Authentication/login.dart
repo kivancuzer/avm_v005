@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-//Kivanc
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();

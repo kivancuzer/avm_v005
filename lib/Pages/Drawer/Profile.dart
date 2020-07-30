@@ -1,5 +1,7 @@
-import 'package:avmv005/Pages/Authentication/login.dart';
 import 'package:flutter/material.dart';
+
+import '../../login_islemleri.dart';
+import '../../main.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -9,9 +11,18 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+    return Scaffold(
+      appBar: buildAppBar(),
+      drawer: DrawerCodeOnly(),
+      body: SafeArea(
+        child: ListView(
+          children: <Widget>[
+            LoginIslemleri(),
+          ],
+        ),
+      ),
     );
+
+
   }
 }

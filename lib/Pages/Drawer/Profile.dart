@@ -1,6 +1,5 @@
 import 'package:avmv005/Pages/Authentication/login.dart';
 import 'package:flutter/material.dart';
-import '../../main.dart';
 
 class ProfileScreen extends StatefulWidget {
   @override

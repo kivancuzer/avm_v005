@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'Pages/NavigationBar/bilboard_page.dart';
 import 'Pages/NavigationBar/discounts_page.dart';
 import 'Pages/NavigationBar/gallery_page.dart';
+
 // deneme
 void main() {
   runApp(
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Avm+',
       theme: ThemeData(
-        primaryColor: Colors.blue,
+        primaryColor: Colors.red,
         accentColor: Color(0xFFFEF9EB),
       ),
       home: ScaffoldOgesi(),
@@ -119,19 +120,19 @@ class DrawerCodeOnly extends StatelessWidget {
     ));
   }
 }
+
 Widget buildAppBar() {
-    return new AppBar(
-      backgroundColor: Color.fromRGBO(80, 77, 229, 100),
-            shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-          bottom: Radius.circular(30),
-        )),
-        title: Container(
-          decoration: BoxDecoration(
-            color: Color.fromRGBO(73, 70, 218, 100),
-            borderRadius: BorderRadius.circular(5),
-          ),
-          
-   ),
-    );
-  }
+  return new AppBar(
+    backgroundColor: Color.fromRGBO(80, 77, 229, 100),
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+      bottom: Radius.circular(30),
+    )),
+    title: Container(
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(73, 70, 218, 100),
+        borderRadius: BorderRadius.circular(5),
+      ),
+    ),
+  );
+}

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//Kivanc
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -7,7 +8,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  String _email, _password;
+  String _email;
 
   _submit() {
     if (_formKey.currentState.validate()) {

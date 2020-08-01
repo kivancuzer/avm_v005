@@ -1,13 +1,14 @@
 import 'package:avmv005/Pages/NavigationBar/events_page.dart';
 import 'package:avmv005/Pages/NavigationBar/trends_page.dart';
+import 'package:avmv005/locator.dart';
 import 'package:avmv005/scaffold.dart';
 import 'package:flutter/material.dart';
 import 'Pages/NavigationBar/bilboard_page.dart';
 import 'Pages/NavigationBar/discounts_page.dart';
 import 'Pages/NavigationBar/gallery_page.dart';
 
-
 void main() {
+  setupLocator();
   runApp(
     MaterialApp(initialRoute: "/", routes: {
       "/": (context) => ScaffoldOgesi(),
@@ -46,7 +47,6 @@ class DrawerCodeOnly extends StatelessWidget {
               child: Align(
                 child: FlutterLogo(
                   size: 40.0,
-
                 ),
                 alignment: Alignment.bottomLeft,
               ),

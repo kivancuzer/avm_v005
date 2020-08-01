@@ -20,7 +20,6 @@ class _SearchListExampleState extends State<SearchListExample> {
   final TextEditingController _controller = new TextEditingController();
   List<dynamic> _list;
   bool _isSearching;
-  String _searchText = "";
   List searchresult = new List();
 
   _SearchListExampleState() {
@@ -28,12 +27,10 @@ class _SearchListExampleState extends State<SearchListExample> {
       if (_controller.text.isEmpty) {
         setState(() {
           _isSearching = false;
-          _searchText = "";
         });
       } else {
         setState(() {
           _isSearching = true;
-          _searchText = _controller.text;
         });
       }
     });
@@ -46,7 +43,7 @@ class _SearchListExampleState extends State<SearchListExample> {
     values();
   }
 
-  void values()  {
+  void values() {
     _list = List();
     var firestore = Firestore.instance;
     //Anasayfa_Avmler Koleksiyonunu çek
@@ -72,27 +69,28 @@ class _SearchListExampleState extends State<SearchListExample> {
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               new Flexible(
-                  child: searchresult.length != 0 || _controller.text.isNotEmpty
-                      ? new ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: searchresult.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            String listData = searchresult[index];
-                            return new ListTile(
-                              title: new Text(listData.toString()),
-                            );
-                          },
-                        )
-                      : new ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: _list.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            String listData = _list[index];
-                            return new ListTile(
-                              title: new Text(listData.toString()),
-                            );
-                          },
-                        ),)
+                child: searchresult.length != 0 || _controller.text.isNotEmpty
+                    ? new ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: searchresult.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          String listData = searchresult[index];
+                          return new ListTile(
+                            title: new Text(listData.toString()),
+                          );
+                        },
+                      )
+                    : new ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: _list.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          String listData = _list[index];
+                          return new ListTile(
+                            title: new Text(listData.toString()),
+                          );
+                        },
+                      ),
+              )
             ],
           ),
         ));

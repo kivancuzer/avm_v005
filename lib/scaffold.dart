@@ -1,8 +1,9 @@
-import 'package:avmv005/Pages/Drawer/Profile.dart';
 import 'package:avmv005/Pages/NavigationBar/new_home_page.dart';
 import 'package:avmv005/main.dart';
 import 'package:flutter/material.dart';
 import 'Pages/Drawer/search.dart';
+import 'Pages/landing_page.dart';
+
 
 class ScaffoldOgesi extends StatefulWidget {
   @override
@@ -31,7 +32,7 @@ class ScaffoldState extends State<ScaffoldOgesi> {
         break;
 
       case 4:
-        return ProfileScreen();
+        return LandingPage();
         break;
     }
   }

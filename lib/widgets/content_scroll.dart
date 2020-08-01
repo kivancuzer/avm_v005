@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 // yorum satırı denemesi
 
+// ignore: must_be_immutable
 class ContentScroll extends StatelessWidget {
-  String a ;
+  String a;
   Future getPosts() async {
     var firestore = Firestore.instance;
     //Anasayfa_Avmler Koleksiyonunu çek
@@ -29,7 +30,6 @@ class ContentScroll extends StatelessWidget {
               //Veriler Yülenirke
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return Center(
-                  
                   child: Text("Loading..."),
                 );
               } //Veriler Yüklendikten sonra

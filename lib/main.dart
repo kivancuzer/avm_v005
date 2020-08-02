@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'Pages/NavigationBar/bilboard_page.dart';
 import 'Pages/NavigationBar/discounts_page.dart';
 import 'Pages/NavigationBar/gallery_page.dart';
-
+//deneme
 void main() {
   setupLocator();
   runApp(
